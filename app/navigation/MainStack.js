@@ -15,9 +15,17 @@ import Review from '@screens/Review';
 import SelectFontOption from '@screens/SelectFontOption';
 import FCategory from '@screens/FCategory';
 
+//helpdesk
+import Helpdesk from '@screens/Helpdesk';
+import SpecHelpDesk from '@screens/Helpdesk/SpecHelpDesk';
+import CategoryHelp from '@screens/Helpdesk/CategoryHelp';
+import SelectCategory from '@screens/Helpdesk/SelectCategory';
+import SubmitHelpdesk from '../screens/Helpdesk/Submit';
+
 import Notification from '@screens/Notification';
 
 import {BottomTabNavigatorMazi, tabBarIcon} from './components';
+import ModalLocation from '../screens/Helpdesk/ModalLocation';
 
 const Stack = createStackNavigator();
 
@@ -109,6 +117,36 @@ function MainStack() {
       <Stack.Screen
         name="FCategory"
         component={FCategory}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="Helpdesk"
+        component={Helpdesk}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SpecHelpDesk"
+        component={SpecHelpDesk}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="CategoryHelp"
+        component={CategoryHelp}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SelectCategory"
+        component={SelectCategory}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="SubmitHelpdesk"
+        component={SubmitHelpdesk}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ModalLocation"
+        component={ModalLocation}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
