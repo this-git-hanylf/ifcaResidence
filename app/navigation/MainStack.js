@@ -26,6 +26,11 @@ import Notification from '@screens/Notification';
 
 import {BottomTabNavigatorMazi, tabBarIcon} from './components';
 import ModalLocation from '../screens/Helpdesk/ModalLocation';
+import StatusHelp from '../screens/Helpdesk/StatusHelp';
+import ViewHistoryStatus from '../screens/Helpdesk/ViewHistoryStatus';
+import ViewHistoryDetail from '../screens/Helpdesk/ViewHistoryDetail';
+import PreviewImage from '../screens/PreviewImage';
+import ViewHistDetail from '../screens/Helpdesk/VIewHistDetail';
 
 const Stack = createStackNavigator();
 
@@ -147,6 +152,27 @@ function MainStack() {
       <Stack.Screen
         name="ModalLocation"
         component={ModalLocation}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="StatusHelp"
+        component={StatusHelp}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ViewHistoryStatus"
+        component={ViewHistoryStatus}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="ViewHistoryDetail"
+        component={ViewHistoryDetail}
+        // component={ViewHistDetail} //sementara
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="PreviewImage"
+        component={PreviewImage}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

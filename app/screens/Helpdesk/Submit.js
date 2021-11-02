@@ -239,16 +239,14 @@ export default function SubmitHelpdesk({route, props}) {
       .then(image => {
         console.log('received image', image);
 
-        setImage({
-          image: [
-            {
-              uri: image.path,
-              width: image.width,
-              height: image.height,
-              mime: image.mime,
-            },
-          ],
-        });
+        setImage([
+          {
+            uri: image.path,
+            width: image.width,
+            height: image.height,
+            mime: image.mime,
+          },
+        ]);
         // setImage(prevState => ({
         //   image: [
         //     ...prevState.image,
@@ -340,7 +338,7 @@ export default function SubmitHelpdesk({route, props}) {
 
     let savePhoto = [];
 
-    image.image.map((images, index) => {
+    image.map((images, index) => {
       let fileName =
         userName.replace(' ', '_') +
         '_' +
@@ -424,7 +422,7 @@ export default function SubmitHelpdesk({route, props}) {
     }
   };
 
-  const uploadPhoto2222 = async dataTicketNo => {
+  const uploadPhoto_punya_alfaoplus = async dataTicketNo => {
     setSpinner(true);
     console.log('dataReportno', dataTicketNo);
     //   this.setState({isLoading: true, loadingText: 'Uploading image ...'});
@@ -436,15 +434,15 @@ export default function SubmitHelpdesk({route, props}) {
     const data = {
       // cons: 'IFCAPB',
       report_no: dataTicketNo,
-      entity: x.entity_cd,
-      project: x.project_no,
+      entity_cd: x.entity_cd,
+      project_no: x.project_no,
       request_by: x.reportName,
       audit_user: x.data.audit_user,
       //   seqNo: x.seqNo,
     };
+
     console.log('data save foto', data);
-    let saveFoto = [];
-    image.image.map(async (images, index) => {
+    image.map((images, index) => {
       let fileName =
         x.reportName.replace(' ', '_') +
         '_' +
@@ -452,53 +450,35 @@ export default function SubmitHelpdesk({route, props}) {
         '_ticket_' +
         (index + 1) +
         '.jpg';
-      let fileImg = images.uri.replace('file://', '');
+      let fileImg = RNFetchBlob.wrap(images.uri.replace('file://', ''));
 
       const frmData = {
-        // data: data,
-        // seq_no_pict: index,
-        report_no: dataTicketNo,
-        entity: x.entity_cd,
-        project: x.project_no,
-        request_by: x.reportName,
-        audit_user: x.data.audit_user,
-        name: 'image',
-        // data: data,
+        data: data,
         seq_no_pict: index,
-        filename: fileName,
-        image: fileImg,
       };
 
-      console.log('form data image save', frmData);
-      saveFoto.push(frmData);
-    });
-
-    const config = {
-      headers: {
-        Accept: 'application/json',
-        'Content-Type': 'multipart/form-data',
-      },
-    };
-    console.log('save foto', saveFoto);
-
-    await axios
-      .post(
-        'http://34.87.121.155:2121/apiwebpbi/api/csentry-uploadImgTicket',
-        saveFoto,
-        {config},
-        // {'Content-Type': 'multipart/form-data'},
-      ) //kalo untuk save form input pake nya 'data'
-      .then(res => {
-        console.log('res upload foto res', res);
-        console.log('res upload foto', res.data);
-        // console.log('res upload', res.data.Pesan);///
-        // return result.response.data;
-        return res.data;
-      })
-      .catch(error => {
-        console.log('err', error.response.data);
-        alert('error nih');
+      RNFetchBlob.fetch(
+        'POST',
+        urlApi + '/csentry-uploadImgTicket',
+        {
+          'Content-Type': 'multipart/form-data',
+        },
+        [
+          {name: 'image', filename: fileName, data: fileImg},
+          {name: 'data', data: JSON.stringify(frmData)},
+        ],
+      ).then(resp => {
+        console.log('resp', resp);
+        if (index + 1 === image.length) {
+          console.log('upload sukses');
+          //   if (this._isMount) {
+          //     this.setState({isLoading: false}, () =>
+          //       this.showAlert('Data saved successfuly'),
+          //     );
+          //   }
+        }
       });
+    });
   };
 
   const uploadPhoto = async dataTicketNo => {
@@ -519,7 +499,7 @@ export default function SubmitHelpdesk({route, props}) {
       //   seqNo: x.seqNo,
     };
     let dataSaveAll = [];
-    image.image.map(async (images, index) => {
+    image.map(async (images, index) => {
       let fileName =
         x.reportName.replace(' ', '_') +
         '_' +
@@ -577,9 +557,9 @@ export default function SubmitHelpdesk({route, props}) {
   };
   const removePhoto = async key => {
     console.log('key remove', key);
-    let imageArray = [...image.image];
+    let imageArray = [...image];
     imageArray.splice(key, 1);
-    setImage({image: imageArray});
+    setImage(imageArray);
     //    let imageArray = [...this.state.image];
     //    imageArray.splice(key, 1);
     //    this.setState({image: imageArray});
@@ -664,7 +644,7 @@ export default function SubmitHelpdesk({route, props}) {
       </View>
       <View style={styles.pickerWrap}>
         <Text>Attachment</Text>
-        {image.image.length === 0 ? (
+        {image.length === 0 ? (
           <TouchableOpacity
             onPress={() => handlePhotoPick()}
             style={[styles.sel, {marginBottom: 20, alignSelf: 'center'}]}>
@@ -672,13 +652,13 @@ export default function SubmitHelpdesk({route, props}) {
           </TouchableOpacity>
         ) : (
           <View>
-            {image.image.map((data, key) => (
+            {image.map((data, key) => (
               <TouchableOpacity
                 key={key}
                 style={styles.avatarContainer}
                 onPress={() => console.log('Photo Tapped')}>
                 <View>
-                  <Image style={styles.avatar} source={image.image[key]} />
+                  <Image style={styles.avatar} source={image[key]} />
 
                   <Icon
                     onPress={() => removePhoto(key)}

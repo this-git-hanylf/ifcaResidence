@@ -1,16 +1,16 @@
-import Icon from "@components/Icon";
-import Text from "@components/Text";
-import PropTypes from "prop-types";
-import React from "react";
-import { TouchableOpacity, View } from "react-native";
-import styles from "./styles";
-import Loading from "./Loading";
+import Icon from '@components/Icon';
+import Text from '@components/Text';
+import PropTypes from 'prop-types';
+import React from 'react';
+import {TouchableOpacity, View} from 'react-native';
+import styles from './styles';
+import Loading from './Loading';
 
-const CategoryBoxColor = (props) => {
-  const { title, icon, color, style, onPress, loading } = props;
+const CategoryBoxColor = props => {
+  const {title, icon, color, style, onPress, loading, sizeIcon} = props;
 
   if (loading) {
-    return <Loading style={style}/>;
+    return <Loading style={style} />;
   }
 
   return (
@@ -22,10 +22,9 @@ const CategoryBoxColor = (props) => {
             backgroundColor: color,
           },
         ]}
-        borderRadius={8}
-      >
+        borderRadius={8}>
         <View style={styles.viewIcon}>
-          <Icon name={icon} size={18} style={styles.icon} />
+          <Icon name={icon} size={sizeIcon} style={styles.icon} />
         </View>
         <Text whiteColor bold style={styles.title}>
           {title}
@@ -41,14 +40,16 @@ CategoryBoxColor.propTypes = {
   title: PropTypes.string,
   icon: PropTypes.string,
   color: PropTypes.string,
+  sizeIcon: PropTypes.any,
 };
 
 CategoryBoxColor.defaultProps = {
   onPress: () => {},
   style: {},
-  title: "",
-  icon: "book",
-  color: "#FF8A65",
+  title: '',
+  icon: 'book',
+  color: '#FF8A65',
+  sizeIcon: 23,
 };
 
 export default CategoryBoxColor;

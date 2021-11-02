@@ -7,6 +7,7 @@ import {
   Text,
   Button,
   CategoryGrid,
+  CategoryBoxColor,
   ModalFilterLocation,
 } from '@components';
 import {BaseColor, BaseStyle, useTheme} from '@config';
@@ -115,6 +116,11 @@ export default function Helpdesk() {
     {key: 'newticket', title: 'New Ticket'},
     {key: 'status', title: 'Status'},
   ]);
+
+  const icons = [
+    {key: '1', icon: 'home'},
+    {key: '2', icon: 'bell'},
+  ];
   const [search, setSearch] = useState('');
   const renderScene = SceneMap({
     newticket: Friends,
@@ -160,27 +166,24 @@ export default function Helpdesk() {
           onSelectFilter={onSelectFilter}
         />
       ))} */}
-
       <View
         style={{
           flexDirection: 'row',
         }}>
-        <CategoryGrid
+        <CategoryBoxColor
           loading={loading}
           style={{
-            // paddingLeft: index % 2 == 0 ? 0 : 25,
+            // paddingLeft: index % 2 == 0 ? 0 : 15,
             paddingBottom: 15,
             justifyContent: 'space-between',
             paddingHorizontal: 10,
           }}
-          title={'New Ticket'}
-          subTitle={'Ticket'}
-          icon={'angle-left'}
-          // image={item.image}
-          // onPress={goToPost}
+          title={'Helpdesk'}
+          icon={'headset'}
+          color={colors.primary}
           onPress={() => navigation.navigate('SpecHelpDesk')}
         />
-        <CategoryGrid
+        <CategoryBoxColor
           loading={loading}
           style={{
             // paddingLeft: index % 2 == 0 ? 0 : 15,
@@ -189,11 +192,9 @@ export default function Helpdesk() {
             paddingHorizontal: 10,
           }}
           title={'Status'}
-          subTitle={'Status'}
-          // icon={item.icon}
-          // image={item.image}
-          // onPress={goToPost}
-          onPress={() => navigation.navigate('SpecHelpDesk')}
+          icon={'list-alt'}
+          color={colors.primary}
+          onPress={() => navigation.navigate('StatusHelp')}
         />
       </View>
 
