@@ -165,3 +165,4 @@ export {default as ModalDropdown_debtor} from './ModalDropdown_debtor';
 export {default as ModalDropdown_lotno} from './ModalDropdown_lotno';
 
 export {default as ModalFilterLocation} from './ModalFilterLocation';
+export {default as ListThumbCircleNotif} from './List/ThumbCircleNotif';

@@ -23,6 +23,7 @@ import SelectCategory from '@screens/Helpdesk/SelectCategory';
 import SubmitHelpdesk from '../screens/Helpdesk/Submit';
 
 import Notification from '@screens/Notification';
+import NotificationDetail from '../screens/Notification/notifDetail';
 
 import {BottomTabNavigatorMazi, tabBarIcon} from './components';
 import ModalLocation from '../screens/Helpdesk/ModalLocation';
@@ -113,6 +114,11 @@ function MainStack() {
       <Stack.Screen
         name="Notification"
         component={Notification}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="NotificationDetail"
+        component={NotificationDetail}
         options={{headerShown: false}}
       />
       <Stack.Screen
