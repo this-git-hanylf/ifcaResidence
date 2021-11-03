@@ -31,6 +31,7 @@ import ViewHistoryStatus from '../screens/Helpdesk/ViewHistoryStatus';
 import ViewHistoryDetail from '../screens/Helpdesk/ViewHistoryDetail';
 import PreviewImage from '../screens/PreviewImage';
 import ViewHistDetail from '../screens/Helpdesk/VIewHistDetail';
+import PreviewImageHelpdesk from '../screens/Helpdesk/PreviewImageHelpdesk';
 
 const Stack = createStackNavigator();
 
@@ -171,8 +172,8 @@ function MainStack() {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="PreviewImage"
-        component={PreviewImage}
+        name="PreviewImageHelpdesk"
+        component={PreviewImageHelpdesk}
         options={{headerShown: false}}
       />
     </Stack.Navigator>

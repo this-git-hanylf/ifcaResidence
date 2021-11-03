@@ -68,6 +68,7 @@ export default function ViewHistoryDetail({route}) {
   const deviceWidth = Dimensions.get('window').width;
   const [isImageViewVisible, setImageViewVisible] = useState();
   const [url_image, setUrl_Image] = useState();
+  const [image_solved, setImageSolved] = useState();
   //   const [images, setImage] = useState(url_image);
   const [images, setImage] = useState(imagesDummy); //sementara aja
   const selectedPayment = {
@@ -188,6 +189,40 @@ export default function ViewHistoryDetail({route}) {
       });
   };
 
+  const getSolvedPicture = async data => {
+    const formData = {
+      report_no: 'EX21090021', //hardcode dulu
+      // report_no: data.report_no,
+    };
+
+    // console.log('form data multi', formData);
+
+    const config = {
+      headers: {
+        accept: 'application/json',
+        'Content-Type': 'application/json',
+        token: '',
+      },
+    };
+
+    await axios
+      .post(urlApi + '/csupdate-getsolvedpict', formData, {config})
+      .then(res => {
+        // console.log('res tiket multi', res.data);
+        const resGalleryService = res.data;
+
+        console.log('resGalleryService', resGalleryService);
+        setImageSolved(resGalleryService);
+
+        setSpinner(false);
+        // return res.data;
+      })
+      .catch(error => {
+        console.log('err data multi', error);
+        alert('error nih');
+      });
+  };
+
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
@@ -197,6 +232,7 @@ export default function ViewHistoryDetail({route}) {
       //   console.log('routeparams', route.params);
       //   setDataHistoryStatus(route.params);
       getTicketDetailMulti(route.params);
+      getSolvedPicture(route.params);
     }, 3000);
   }, []);
 
@@ -208,16 +244,7 @@ export default function ViewHistoryDetail({route}) {
     // });
     setSelectedIndex(index);
 
-    _renderItem(index);
     console.log('Selected index', selectedIndex);
-  };
-
-  const _renderItem = index => {
-    if (selectedIndex === 0) {
-      <Text>detail</Text>;
-    } else {
-      <Text>feedback</Text>;
-    }
   };
 
   //   const saveConfirm = () => {
@@ -481,6 +508,12 @@ export default function ViewHistoryDetail({route}) {
                       </View>
                     </View>
                   </View>
+
+                  <View style={{marginTop: 20}}>
+                    <Text style={{fontWeight: 'bold', fontSize: 14}}>
+                      Gallery of Request
+                    </Text>
+                  </View>
                   <View>
                     {dataImageMulti.map((item, key) => {
                       return (
@@ -489,7 +522,7 @@ export default function ViewHistoryDetail({route}) {
                           style={{flex: 1}}
                           activeOpacity={1}
                           onPress={() =>
-                            navigation.navigate('PreviewImage', {
+                            navigation.navigate('PreviewImageHelpdesk', {
                               images: dataImageMulti,
                             })
                           }>
@@ -500,6 +533,38 @@ export default function ViewHistoryDetail({route}) {
                               width: '100%',
                               height: 400,
                               marginTop: 20,
+                            }}
+                            source={{uri: `${item.file_url}`}}
+                          />
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </View>
+
+                  <View style={{marginTop: 20}}>
+                    <Text style={{fontWeight: 'bold', fontSize: 14}}>
+                      Gallery of Solved
+                    </Text>
+                  </View>
+                  <View style={{marginBottom: '40%'}}>
+                    {image_solved.map((item, key) => {
+                      return (
+                        <TouchableOpacity
+                          key={key}
+                          style={{flex: 1}}
+                          activeOpacity={1}
+                          onPress={() =>
+                            navigation.navigate('PreviewImageHelpdesk', {
+                              images: image_solved,
+                            })
+                          }>
+                          <Image
+                            key={key}
+                            style={{
+                              flex: 1,
+                              width: '100%',
+                              height: 400,
+                              marginTop: 10,
                             }}
                             source={{uri: `${item.file_url}`}}
                           />
@@ -526,7 +591,6 @@ export default function ViewHistoryDetail({route}) {
                     ))
                   } */}
                   {/* //contoh bikin signature  dtaro  sini */}
-
                   {/* //contoh image slider view */}
                   {/* <View style={{marginTop: 50}}>
                     <Text style={{fontWeight: 'bold'}}>Finish of Services</Text>
