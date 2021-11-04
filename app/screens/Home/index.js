@@ -107,6 +107,9 @@ const Home = props => {
           <View style={styles.paddingContent}>
             <Categories style={{marginTop: 10}} />
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('HouseRoles')}>
+            <Text>HouseRoles</Text>
+          </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
     );

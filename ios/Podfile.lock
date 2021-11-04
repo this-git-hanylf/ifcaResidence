@@ -280,6 +280,8 @@ PODS:
     - React-Core
   - react-native-splash-screen (3.2.0):
     - React
+  - react-native-webview (11.14.2):
+    - React-Core
   - React-perflogger (0.64.1)
   - React-RCTActionSheet (0.64.1):
     - React-Core/RCTActionSheetHeaders (= 0.64.1)
@@ -346,6 +348,8 @@ PODS:
     - React-perflogger (= 0.64.1)
   - ReactNativeDarkMode (0.2.2):
     - React
+  - rn-fetch-blob (0.12.0):
+    - React-Core
   - RNCAsyncStorage (1.15.9):
     - React-Core
   - RNCMaskedView (0.1.11):
@@ -358,10 +362,9 @@ PODS:
     - SDWebImageWebPCoder (~> 0.8.4)
   - RNGestureHandler (1.10.3):
     - React-Core
-  - RNImageCropPicker (0.25.0):
+  - RNImageCropPicker (0.24.1):
     - QBImagePickerController
     - React-Core
-    - React-RCTImage
     - RSKImageCropper
   - RNLocalize (2.1.5):
     - React-Core
@@ -455,6 +458,7 @@ DEPENDENCIES:
   - react-native-restart (from `../node_modules/react-native-restart`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
+  - react-native-webview (from `../node_modules/react-native-webview`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
   - React-RCTAnimation (from `../node_modules/react-native/Libraries/NativeAnimation`)
@@ -468,6 +472,7 @@ DEPENDENCIES:
   - React-runtimeexecutor (from `../node_modules/react-native/ReactCommon/runtimeexecutor`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeDarkMode (from `../node_modules/react-native-dark-mode`)
+  - rn-fetch-blob (from `../node_modules/rn-fetch-blob`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNCMaskedView (from `../node_modules/@react-native-community/masked-view`)"
   - "RNDateTimePicker (from `../node_modules/@react-native-community/datetimepicker`)"
@@ -544,6 +549,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
+  react-native-webview:
+    :path: "../node_modules/react-native-webview"
   React-perflogger:
     :path: "../node_modules/react-native/ReactCommon/reactperflogger"
   React-RCTActionSheet:
@@ -570,6 +577,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeDarkMode:
     :path: "../node_modules/react-native-dark-mode"
+  rn-fetch-blob:
+    :path: "../node_modules/rn-fetch-blob"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNCMaskedView:
@@ -630,6 +639,7 @@ SPEC CHECKSUMS:
   react-native-restart: 733a51ad137f15b0f8dc34c4082e55af7da00979
   react-native-safe-area-context: 584dc04881deb49474363f3be89e4ca0e854c057
   react-native-splash-screen: 200d11d188e2e78cea3ad319964f6142b6384865
+  react-native-webview: cc4ac8f021a832dce2979e1f48c5595341dd2fb5
   React-perflogger: aad6d4b4a267936b3667260d1f649b6f6069a675
   React-RCTActionSheet: fc376be462c9c8d6ad82c0905442fd77f82a9d2a
   React-RCTAnimation: ba0a1c3a2738be224a08092fa7f1b444ab77d309
@@ -643,12 +653,13 @@ SPEC CHECKSUMS:
   React-runtimeexecutor: ff951a0c241bfaefc4940a3f1f1a229e7cb32fa6
   ReactCommon: bedc99ed4dae329c4fcf128d0c31b9115e5365ca
   ReactNativeDarkMode: 0178ffca3b10f6a7c9f49d6f9810232b328fa949
+  rn-fetch-blob: f065bb7ab7fb48dd002629f8bdcb0336602d3cba
   RNCAsyncStorage: 26f25150da507524a7815f2ada06ca0967f65633
   RNCMaskedView: 0e1bc4bfa8365eba5fbbb71e07fbdc0555249489
   RNDateTimePicker: 7658208086d86d09e1627b5c34ba0cf237c60140
   RNFastImage: 1f2cab428712a4baaf78d6169eaec7f622556dd7
   RNGestureHandler: a479ebd5ed4221a810967000735517df0d2db211
-  RNImageCropPicker: 0a731d984e64ee4c28bddaa7ce52262e4b80979f
+  RNImageCropPicker: d9fc1fa9321aaa9f1551f9019d8e9a21863e73b2
   RNLocalize: 74b82db20cc3895ccc25af992c644879bcec2815
   RNReanimated: b8c8004b43446e3c2709fe64b2b41072f87428ad
   RNScreens: 6e1ea5787989f92b0671049b808aef64fa1ef98c
@@ -660,6 +671,6 @@ SPEC CHECKSUMS:
   Yoga: a7de31c64fe738607e7a3803e3f591a4b1df7393
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a
 
-PODFILE CHECKSUM: b66c94d8cf67b340a0a8c5ac801daf1ab837aa84
+PODFILE CHECKSUM: 75edf6393069c4203cd5bd208f1ce7f517bb39d6
 
 COCOAPODS: 1.11.2

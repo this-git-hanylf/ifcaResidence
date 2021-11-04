@@ -33,6 +33,7 @@ import ViewHistoryDetail from '../screens/Helpdesk/ViewHistoryDetail';
 import PreviewImage from '../screens/PreviewImage';
 import ViewHistDetail from '../screens/Helpdesk/VIewHistDetail';
 import PreviewImageHelpdesk from '../screens/Helpdesk/PreviewImageHelpdesk';
+import HouseRoles from '../screens/HouseRoles';
 
 const Stack = createStackNavigator();
 
@@ -180,6 +181,11 @@ function MainStack() {
       <Stack.Screen
         name="PreviewImageHelpdesk"
         component={PreviewImageHelpdesk}
+        options={{headerShown: false}}
+      />
+      <Stack.Screen
+        name="HouseRoles"
+        component={HouseRoles}
         options={{headerShown: false}}
       />
     </Stack.Navigator>
